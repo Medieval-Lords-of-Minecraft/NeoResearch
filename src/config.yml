@@ -1,0 +1,27 @@
+sql:
+  host: 127.0.0.1
+  port: '3306'
+  db: MLMC
+  username: username
+  password: password
+  flags: ?verifyServerCertificate=false&useSSL=false&useUnicode=true&characterEncoding=utf-8
+  
+general:
+  research_complete_command: "bc &4[&c&lMLMC&4] &e%player% &7has just completed the &c%item% &7research item!"
+  research_levelup: "bc &4[&c&lMLMC&4] &7Your research level improved! You may now research up to level &e%level% &7mobs!"
+  permission_command: "lp user %player% permission set research.item.%item%"
+  is_instance: false
+
+exp:
+  5: 500
+  6: 600
+  
+research_items:
+  "Example Item":
+    required: true
+    goals:
+      SewerZombie: 10
+      SewerSkeleton: 5
+    attributes:
+      str: 5
+      int: 10

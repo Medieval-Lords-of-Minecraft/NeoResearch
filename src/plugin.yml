@@ -1,0 +1,10 @@
+name: NeoResearch
+main: me.neoblade298.neoresearch.Research
+author: [Neoblade298]
+depend: [MythicMobs, SkillAPI, NeoCore]
+version: 1.0
+api-version: 1.16
+commands:
+   nr:
+      description: Main command
+      usage: /nr
