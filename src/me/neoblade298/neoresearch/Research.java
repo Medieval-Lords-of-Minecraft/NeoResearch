@@ -76,7 +76,7 @@ public class Research extends JavaPlugin implements Listener, IOComponent {
 		enabledWorlds.add("Dev");
 		enabledWorlds.add("ClassPVP");
 		enabledWorlds.add("Argyll");
-		IOManager.register(this, this);
+		IOManager.register(this, this, "ResearchManager");
 
 		loadConfig();
 	}
@@ -302,11 +302,6 @@ public class Research extends JavaPlugin implements Listener, IOComponent {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-	}
-	
-	@Override
-	public int getPriority() {
-		return 5;
 	}
 	
 	@Override
@@ -685,10 +680,5 @@ public class Research extends JavaPlugin implements Listener, IOComponent {
 	@EventHandler
 	public void onAttributeUnload(PlayerAttributeUnloadEvent e) {
 		resetBonuses(e.getPlayer());
-	}
-
-	@Override
-	public String getKey() {
-		return "ResearchManager";
 	}
 }
