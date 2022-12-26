@@ -304,7 +304,8 @@ public class Commands implements CommandExecutor{
 				for (Entry<String, Integer> e : ri.getGoals().entrySet()) {
 					int points = stats.getResearchPoints().getOrDefault(e.getKey(), 0);
 					int pointsReq = e.getValue();
-					sender.sendMessage("§c" + e.getKey() + "§7: §f" + points + " / " + pointsReq);
+					String color = points >= pointsReq ? "§a" : "§c";
+					sender.sendMessage("§c" + e.getKey() + "§7: " + color + points + " / " + pointsReq);
 				}
 				return true;
 			}
