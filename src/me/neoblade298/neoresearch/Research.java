@@ -350,6 +350,7 @@ public class Research extends JavaPlugin implements Listener, IOComponent {
 	public void savePlayer(Player p, Statement insert, Statement delete) {
 		autosavePlayer(p, insert, delete);
 		playerAttrs.remove(p.getUniqueId());
+		playerStats.remove(p.getUniqueId());
 	}
 
 	@EventHandler
