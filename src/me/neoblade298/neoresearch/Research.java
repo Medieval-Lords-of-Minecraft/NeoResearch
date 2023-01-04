@@ -198,8 +198,6 @@ public class Research extends JavaPlugin implements Listener, IOComponent {
 	@Override
 	public void loadPlayer(Player p, Statement stmt) {
 		UUID uuid = p.getUniqueId();
-		
-		Bukkit.getLogger().info("[NeoResearch] Attempting to load player " + p.getName());
 		// Only load if their account doesn't exist, attempts to fix double load
 		if (playerAttrs.containsKey(uuid)) {
 			return;
