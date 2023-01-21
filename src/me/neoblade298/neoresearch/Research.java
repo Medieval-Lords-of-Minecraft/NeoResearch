@@ -30,10 +30,10 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.neoblade298.neocore.info.BossInfo;
-import me.neoblade298.neocore.info.InfoAPI;
-import me.neoblade298.neocore.io.IOComponent;
-import me.neoblade298.neocore.io.IOManager;
+import me.neoblade298.neocore.bukkit.info.BossInfo;
+import me.neoblade298.neocore.bukkit.info.InfoAPI;
+import me.neoblade298.neocore.bukkit.io.IOComponent;
+import me.neoblade298.neocore.bukkit.io.IOManager;
 import me.neoblade298.neoresearch.ResearchItem;
 import me.neoblade298.neoresearch.inventories.InventoryListeners;
 import me.neoblade298.neoresearch.inventories.ResearchInventory;

@@ -17,8 +17,8 @@ import com.sucy.skill.SkillAPI;
 
 import de.tr7zw.nbtapi.NBTItem;
 import io.lumine.mythic.bukkit.MythicBukkit;
-import me.neoblade298.neocore.info.BossInfo;
-import me.neoblade298.neocore.info.InfoAPI;
+import me.neoblade298.neocore.bukkit.info.BossInfo;
+import me.neoblade298.neocore.bukkit.info.InfoAPI;
 import me.neoblade298.neoresearch.inventories.ResearchAttributesInventory;
 
 

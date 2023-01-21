@@ -5,7 +5,7 @@
 	<classpathentry kind="lib" path="src/SkillAPI.jar"/>
 	<classpathentry kind="lib" path="src/spigot-api-1.17.1-R0.1-SNAPSHOT-shaded.jar"/>
 	<classpathentry kind="lib" path="src/MythicMobs-5.0.3-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="src/NeoCore.jar"/>
+	<classpathentry kind="lib" path="src/NeoCore-0.0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
