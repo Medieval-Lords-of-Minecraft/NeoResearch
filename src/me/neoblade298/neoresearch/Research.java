@@ -30,10 +30,10 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.neoblade298.neocore.bukkit.NeoCore;
 import me.neoblade298.neocore.bukkit.info.BossInfo;
 import me.neoblade298.neocore.bukkit.info.InfoAPI;
 import me.neoblade298.neocore.bukkit.io.IOComponent;
-import me.neoblade298.neocore.bukkit.io.IOManager;
 import me.neoblade298.neoresearch.ResearchItem;
 import me.neoblade298.neoresearch.inventories.InventoryListeners;
 import me.neoblade298.neoresearch.inventories.ResearchInventory;
@@ -76,7 +76,7 @@ public class Research extends JavaPlugin implements Listener, IOComponent {
 		enabledWorlds.add("Dev");
 		enabledWorlds.add("ClassPVP");
 		enabledWorlds.add("Argyll");
-		IOManager.register(this, this, "ResearchManager");
+		NeoCore.registerIOComponent(this, this, "ResearchManager");
 
 		loadConfig();
 	}
