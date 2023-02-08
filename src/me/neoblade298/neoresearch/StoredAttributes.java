@@ -49,11 +49,13 @@ public class StoredAttributes {
 			}
 			// Must be deep copy
 			int remove = -active.getOrDefault(attr, 0);
-			int add = stored.get(attr);
+			int add = stored.getOrDefault(attr, 0);
 			
 			if (remove != 0) data.addBonusAttributes(attr, remove);
-			active.put(attr, stored.get(attr));
-			if (add != 0) data.addBonusAttributes(attr, add);
+			if (add != 0) {
+				active.put(attr, stored.get(attr));
+				data.addBonusAttributes(attr, add);
+			}
 		}
 	}
 	public void removeStoredAttributes() {
@@ -63,7 +65,8 @@ public class StoredAttributes {
 	public void removeAttributes(Player p) {
 		PlayerData data = SkillAPI.getPlayerData(p);
 		for (String attr : active.keySet()) {
-			data.addBonusAttributes(attr, -active.get(attr));
+			int amt = active.getOrDefault(attr, 0);
+			if (amt != 0) data.addBonusAttributes(attr, -active.get(attr));
 		}
 		active.clear();
 	}
