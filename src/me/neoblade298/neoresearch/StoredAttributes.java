@@ -48,9 +48,12 @@ public class StoredAttributes {
 				continue;
 			}
 			// Must be deep copy
-			data.addBonusAttributes(attr, -active.getOrDefault(attr, 0));
+			int remove = -active.getOrDefault(attr, 0);
+			int add = stored.get(attr);
+			
+			if (remove != 0) data.addBonusAttributes(attr, remove);
 			active.put(attr, stored.get(attr));
-			data.addBonusAttributes(attr, stored.get(attr));
+			if (add != 0) data.addBonusAttributes(attr, add);
 		}
 	}
 	public void removeStoredAttributes() {
