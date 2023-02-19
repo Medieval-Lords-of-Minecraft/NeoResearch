@@ -19,6 +19,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.block.Container;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -355,6 +356,9 @@ public class Research extends JavaPlugin implements Listener, IOComponent {
 	public void onInteract(PlayerInteractEvent e) {
 		if (e.getHand() != null && e.getHand().equals(EquipmentSlot.OFF_HAND)) return;
 		if (!e.getAction().equals(Action.RIGHT_CLICK_AIR) && !e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+			return;
+		}
+		if (e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getClickedBlock().getState() instanceof Container) {
 			return;
 		}
 		Player p = e.getPlayer();
