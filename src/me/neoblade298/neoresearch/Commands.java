@@ -17,8 +17,10 @@ import com.sucy.skill.SkillAPI;
 
 import de.tr7zw.nbtapi.NBTItem;
 import io.lumine.mythic.bukkit.MythicBukkit;
+import me.neoblade298.neocore.bukkit.NeoCore;
 import me.neoblade298.neocore.bukkit.info.BossInfo;
 import me.neoblade298.neocore.bukkit.info.InfoAPI;
+import me.neoblade298.neocore.bukkit.util.Util;
 import me.neoblade298.neoresearch.inventories.ResearchAttributesInventory;
 
 
@@ -369,6 +371,9 @@ public class Commands implements CommandExecutor{
 		}
 		if (args[0].equalsIgnoreCase("attrs") && sender instanceof Player) {
 			Player p = (Player) sender;
+			if (!NeoCore.isLoaded(p) || !SkillAPI.isLoaded(p)) {
+				Util.msg(sender, "&cYour account isn't loaded yet! Give it a few seconds!");
+			}
 			int acc = SkillAPI.getPlayerAccountData(p).getActiveId();
 			StoredAttributes pAttr = Research.getPlayerAttributes(p);
 			if (pAttr == null) {

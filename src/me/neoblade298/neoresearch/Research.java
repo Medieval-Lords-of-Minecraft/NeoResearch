@@ -32,6 +32,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.neoblade298.neocore.bukkit.NeoCore;
+import me.neoblade298.neocore.bukkit.events.NeoCoreLoadCompleteEvent;
 import me.neoblade298.neocore.bukkit.info.BossInfo;
 import me.neoblade298.neocore.bukkit.info.InfoAPI;
 import me.neoblade298.neocore.bukkit.io.IOComponent;
@@ -42,6 +43,8 @@ import me.neoblade298.neoresearch.inventories.ResearchInventory;
 import com.sucy.skill.SkillAPI;
 import com.sucy.skill.api.event.PlayerAttributeLoadEvent;
 import com.sucy.skill.api.event.PlayerAttributeUnloadEvent;
+import com.sucy.skill.api.event.PlayerLoadCompleteEvent;
+
 import de.tr7zw.nbtapi.NBTItem;
 import io.lumine.mythic.api.mobs.MobManager;
 import io.lumine.mythic.bukkit.MythicBukkit;
@@ -61,6 +64,7 @@ public class Research extends JavaPlugin implements Listener, IOComponent {
 	private static HashMap<String, HashMap<String, Integer>> converter;
 	private static ArrayList<String> enabledWorlds;
 	private static HashSet<String> minibosses;
+	private static HashSet<UUID> awaitingAttrs = new HashSet<UUID>();
 	public static Random rand;
 	public static boolean debug = false;
 	
@@ -283,12 +287,33 @@ public class Research extends JavaPlugin implements Listener, IOComponent {
 				}
 				p.setHealth(p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
 				playerStats.put(uuid, new PlayerStats(main, level, exp, completedResearchItems, researchPoints, mobKills));
+				awaitingAttrs.add(uuid);
 			}
 			con.close();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			playerStats.put(uuid, new PlayerStats(main, level, exp, completedResearchItems, researchPoints, mobKills));
+		}
+	}
+	
+	@EventHandler
+	public void onSkillAPILoad(PlayerLoadCompleteEvent e) {
+		Player p = e.getPlayer();
+		UUID uuid = p.getUniqueId();
+		if (NeoCore.isLoaded(p) && awaitingAttrs.contains(uuid)) {
+			awaitingAttrs.remove(uuid);
+			updateBonuses(p);
+		}
+	}
+	
+	@EventHandler
+	public void onNeoCoreLoad(NeoCoreLoadCompleteEvent e) {
+		Player p = e.getPlayer();
+		UUID uuid = p.getUniqueId();
+		if (SkillAPI.isLoaded(p) && awaitingAttrs.contains(uuid)) {
+			awaitingAttrs.remove(uuid);
+			updateBonuses(p);
 		}
 	}
 	
